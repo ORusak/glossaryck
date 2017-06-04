@@ -1,0 +1,10 @@
+{
+  "name": "entity-relation",
+  "description": "lib entity-relation",
+  "version": "0.0.1",
+  "main": "entity-relation.js",
+  "files": [
+    "entity-relation.js",
+    "readme.md"
+  ]
+}
