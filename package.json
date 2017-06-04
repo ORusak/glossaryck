@@ -1,0 +1,36 @@
+{
+  "name": "Glosaryck by JavaScript",
+  "version": "0.0.1",
+  "description": "My glosarik by JavaScript",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "monad",
+    "sequence"
+  ],
+  "bugs": {
+    "url": "?"
+  },
+  "author": "Oleg Rusak",
+  "license": "SEE LICENSE IN license.txt",
+  "devDependencies": {
+    "eslint": "3.4.0",
+    "lodash": "4.13.1"
+  },
+  "dependencies": {
+  },
+  "files": [
+    "src",
+    "changelog.md",
+    "readme.md"
+  ],
+  "engines": {
+    "node": "7.0.0"
+  }
+}
