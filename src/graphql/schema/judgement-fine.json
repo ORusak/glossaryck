@@ -1,0 +1,190 @@
+{
+    "type": "object",
+    "title": "Постановление о назначении штрафа",
+    "id": "judgement_fine",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "note": {
+            "type": "string",
+            "description": "Примечание"
+        },
+        "state":{
+            "default": "NEW",
+            "description": "Статус документа",
+            "type": "string",
+            "oneOf": [
+                {
+                    "pattern": "NEW",
+                    "name": "Новый",
+                    "description": "Создан проект документа"
+                },
+                {
+                    "pattern": "ON_APPROVAL",
+                    "name": "На согласовании",
+                    "description": "Документ находится на согласовании"
+                },
+                {
+                    "pattern": "ON_SIGNING",
+                    "name": "На подписании",
+                    "description": "Документ находится на подписании"
+                },
+                {
+                    "pattern": "ON_MODIFICATION",
+                    "name": "На доработке",
+                    "description": "Документ отправлен на доработку"
+                },
+                {
+                    "pattern": "EXECUTED",
+                    "name": "Исполнен",
+                    "description": "Документ исполнен"
+                },
+                {
+                    "pattern": "DEPRECATED",
+                    "name": "Отменён",
+                    "description": "Документ отменён"
+                },
+                {
+                    "pattern": "REJECTED",
+                    "name": "Отклонён",
+                    "description": "По документу принято решение \"Отказ\""
+                }
+            ]
+        },
+        "title": {
+            "type": "string",
+            "title": "Наименование документа",
+            "description": "Наименование документа"
+        },
+        "stroyform_id": {
+            "type": "string",
+            "description": "Идентификатор документа в Стройформ"
+        },
+        "number": {
+            "type": "string",
+            "description": "Номер документа. Формируется автоматически по заданному алгоритму"
+        },
+        "no_number": {
+            "type": "boolean",
+            "default": false,
+            "description": "Признак \"Без номера\""
+        },
+        "penner": {
+            "type": "integer",
+            "description": "Составитель (автор) документа: Ссылка на сотрудника в справочнике \"Сотрудники\""
+        },
+        "assignee": {
+            "type": "integer",
+            "description": "Исполнитель по документу: Ссылка на сотрудника в справочнике \"Сотрудники\""
+        },
+        "date_create_original": {
+            "type": "string",
+            "description": "Дата документа",
+            "format": "date-time"
+        },
+        "is_archived": {
+            "type": "boolean",
+            "default": false,
+            "description": "Документ передан в архив"
+        },
+        "is_deleted": {
+            "type": "boolean",
+            "default": false,
+            "description": "Документ помечен на удаление"
+        },
+        "soft_copy": {
+            "type": "array",
+            "description": "Список с одним приложенным файлом. Используем везде массив для приемственности типов.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "guid": {
+                        "type": "string",
+                        "description": "Ссылка на файл",
+                        "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+                    }
+                },
+                "required": [
+                    "guid"
+                ]
+            },
+            "maxItems": 1
+        },
+        "case_administrative_offence": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "description": "Ссылка на Дело об АП, в рамках которого создаётся документ"
+        },
+        "hearing": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "description": "Ссылка на бизнес-сущность Рассмотрение"
+        },
+        "place": {
+            "type": "string",
+            "description": "Место составления документа - адрес ГУСН"
+        },
+        "approvers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id_employee": {
+                        "type": "integer",
+                        "description": "Идентификатор согласующего лица"
+                    },
+                    "role": {
+                        "oneOf": [
+                            {
+                                "pattern": "APPROVER",
+                                "description": "Согласант"
+                            },
+                            {
+                                "pattern": "SIGNER",
+                                "description": "Подписант"
+                            }
+                        ]
+                    },
+                    "resolution": {
+                        "type": "string",
+                        "description": "Примечание согласования"
+                    },
+                    "is_complete": {
+                        "type": "boolean",
+                        "description": "Признак согласования"
+                    }
+                }
+            }
+        },
+        "effective_date": {
+            "type": "string",
+            "description": "Дата вступления в силу Постановления",
+            "format": "date-time"
+        },
+        "optional_text": {
+            "type": "string",
+            "description": "Произвольный текст для вывода в печатную форму блока дополнительных оснований для вынесения постановления"
+        },
+        "additional_optional_text": {
+            "type": "string",
+            "description": "Дополнительный произвольный текст для печатной формы для ввода информации и документе, фиксирующем сроки начала строительства в случае, когда правонарушение — Не направлено извещение о начале строительства"
+        },
+        "signer": {
+            "type": "object",
+            "properties": {
+                "full_name": {
+                    "type": "string",
+                    "description": "ФИО представителя"
+                },
+                "post": {
+                    "type": "string",
+                    "description": "Должность представителя"
+                },
+                "empty_string": {
+                    "type": "boolean",
+                    "description": "Признак добавления пустой строки для ручного заполнения информации о подписанте"
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

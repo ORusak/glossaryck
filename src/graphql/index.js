@@ -2,20 +2,10 @@
  * Created by Oleg Rusak on 27.06.2017.
  */
 
-const { graphql, buildSchema } = require('graphql')
+const graphql = require('graphql')
+const typeQuery = require('./type-query/type-query')
 
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`)
+const schema = new graphql.GraphQLSchema({ query: typeQuery })
 
-const root = {
-  hello: () => {
-
-    return 'WorHel'
-  }
-}
-
-graphql(schema, '{ hello }', root)
+graphql.graphql(schema, `{ judgementFine(id: "1") { guid }}`)
   .then(console.log)

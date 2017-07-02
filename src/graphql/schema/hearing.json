@@ -1,0 +1,154 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "hearing",
+    "title": "Рассмотрение",
+    "description": "Рассмотрение. Бизнес сущность",
+    "type": "object",
+    "properties": {
+        "number": {
+            "type": "integer",
+            "description": "Номер рассмотрения"
+        },
+        "state": {
+            "type": "string",
+            "default": "DRAFT",
+            "description": "Статус",
+            "oneOf": [{
+                "pattern": "DRAFT",
+                "name": "Черновик",
+                "description": "Создан черновой вариант бизнес-сущности"
+            } , {
+                "pattern": "NEW",
+                "name": "Новое",
+                "description": "Выполнено первое сохранение данных бизнес-сущности"
+            } , {
+                "pattern": "ACCEPTED",
+                "name": "Подтверждено",
+                "description": "Внесены первичные данные о Рассмотрении: Определение о переносе рассмотрения переведено в статус ON_APPROVAL или ON_SIGNINIG"
+            } , {
+                "pattern": "PLANNED",
+                "name": "Назначено",
+                "description": "Рассмотрение назначено: нажата кнопка \"Завершить назначение рассмотрения\" или исполнено Определение о переносе рассмотрения"
+            } , {
+                "pattern": "EXECUTED",
+                "name": "Исполнено",
+                "description": "Постановление о вынесении штрафа или Постановление о прекращении дела переведено в статус ON_APPROVAL или ON_SIGNING"
+            }, {
+                "pattern": "FINISHED",
+                "name": "Завершено",
+                "description": "Постановление о вынесении штрафа или Постановление о прекращении дела переведено в статус EXECUTED"
+            }, {
+                "pattern": "DEPRECATED",
+                "name": "Замещено",
+                "description": "Определение о переносе рассмотрения переведено в статус EXECUTED"
+            }]
+        },
+        "title": {
+            "type": "string",
+            "description": "Наименование сущности"
+        },
+        "case_administrative_offence": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "description": "Ссылка на Дело об АП, созданное на основаниии Протокола"
+        },
+        "participants": {
+            "type": "array",
+            "items": {
+                "type": "integer",
+                "description": "Участники рассмотрения Дела об АП"
+            }
+        },
+        "hearer": {
+            "type": "integer",
+            "description": "Рассмотритель Дела об АП - сотрудник из справочника \"Сотрудники\""
+        },
+        "hearing_date": {
+            "type": "string",
+            "description": "Дата рассмотрения Дела об АП",
+            "format": "date-time"
+        },
+        "hearing_time": {
+            "type": "string",
+            "description": "Время рассмотрения Дела об АП",
+            "format": "date-time"
+        },
+        "place_of_hearing": {
+            "type": "string",
+            "description": "Адрес места рассмотрения дела"
+        },
+        "office": {
+            "type": "string",
+            "description": "Кабинет рассмотрения дела"
+        },
+        "representative": {
+            "type": "object",
+            "properties": {
+                "guid": {
+                    "type": "string",
+                    "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+                    "description": "Представитель субъекта ответственности: должностное лицо"
+                },
+                "lastname": {
+                    "type": "string",
+                    "description": "Представитель субъекта ответственности: Фамилия"
+                },
+                "firstname": {
+                    "type": "string",
+                    "description": "Представитель субъекта ответственности: Имя"
+                },
+                "middlename": {
+                    "type": "string",
+                    "description": "Представитель субъекта ответственности: Отчество"
+                },
+                "position": {
+                    "type": "string",
+                    "description": "Представитель субъекта ответственности: Должность"
+                }
+            }
+        },
+        "representative_noshow": {
+            "type": "boolean",
+            "default": false,
+            "description": "Признак \"Представитель субъекта ответственности на рассмотрение не явился\""
+        },
+        "representative_reasoning": {
+            "type": "string",
+            "description": "Объяснения представителя субъекта ответственности"
+        },
+        "liability_type": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "description": "Вид административной ответственности: устное замечание, предупреждение, штраф"
+        },
+        "fine": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "description": "Штраф, назначенный в результате рассмотрения Дела об АП"
+        },
+        "dismiss_reason": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "description": "Основание для прекращения дела"
+        },
+        "deprecated_by": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "description": "Рассмотрение, заменившее данное Рассмотрение (перенос)"
+        },
+        "is_archived": {
+            "type": "boolean",
+            "default": false,
+            "description": "Сущность передана в архив"
+        },
+        "is_deleted": {
+            "type": "boolean",
+            "default": false,
+            "description": "Сущность помечена на удаление"
+        },
+        "source": {
+            "$ref": "./../components/source.jsd"
+        }
+    },
+    "additionalProperties": false
+}
