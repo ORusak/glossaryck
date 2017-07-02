@@ -1,5 +1,7 @@
 /**
  * Created by Oleg Rusak on 04.06.2017.
+ *
+ * Proto code
  */
 "use strict"
 
