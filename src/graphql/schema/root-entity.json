@@ -25,10 +25,6 @@
             "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
             "description": "Link revision type business entity"
         },
-        "data": {
-            "type": "object",
-            "description": "Entity storage data"
-        },
         "state": {
             "type": "string",
             "description": "State document"

@@ -2,7 +2,7 @@ const date = (date) => date.toISOString()
 
 module.exports = [
   {
-    "guid": 1,
+    "guid": '1',
     "guid_revision": 1,
     "actual_range": "[2016-10-12T15:35:34.897+00:00,)",
     "description_revision": "judgement_fine1",

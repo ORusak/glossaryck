@@ -5,24 +5,31 @@
 const _ = require('lodash')
 const graphql = require('graphql')
 
-function mapSchemaToGraphQL (schema, fields) {
+function factoryTypeBySchema (schema, fields, interfaceType = [], mapCustomField) {
+  const initInterfaceType = Array.isArray(interfaceType) ? interfaceType : [ interfaceType ]
 
-  return new graphql.GraphQLObjectType({
+  const entityType = new graphql.GraphQLObjectType({
     name: _.camelCase(schema.id),
     fields,
-    description: schema.description || schema.title
+    description: schema.description || schema.title,
+    interfaces: initInterfaceType,
+    isTypeOf: (value) => {
+      return value.document_type_guid_revision === _.snakeCase(schema.id)
+    }
   })
+
+  return entityType
 }
 
 function mapPropertiesToGraphQG (properties, mapField) {
 
   return _.reduce(properties, (result, property, key) => {
-    const graphQLFieldOption = mapField[key] || {
+    const customHandlerField = _.get(mapField, key)
+
+    result[key] = (customHandlerField && customHandlerField(property)) || {
       type: mapTypeSchemaToGraphQL(property),
       description: property.description
     }
-
-    result[key] = graphQLFieldOption
 
     return result
   }, {})
@@ -57,7 +64,7 @@ function mapTypeSchemaToGraphQL (property) {
 }
 
 module.exports = {
-  mapSchemaToGraphQL,
+  factoryTypeBySchema,
   mapPropertiesToGraphQG,
   mapTypeSchemaToGraphQL
 }

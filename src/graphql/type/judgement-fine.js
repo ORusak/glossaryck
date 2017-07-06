@@ -3,39 +3,30 @@
  */
 
 const _ = require('lodash')
-const graphql = require('graphql');
 
-const mapSchemaGraphQL = require('../lib/map-schema-graphql')
-
-/**
- * Реализуем через функциональный подход для производительности.
- *
- * Мы могли бы использовать ООП с выделением базового класса отвечающего за:
- *  - подмешивание корневых полей
- *  - предоставление приватных методов трансформации типов
- *  - метода трансформации всего документа в тип graphql
- *
- * В дочерних классах через getter можно переопределять поля с особыми типами или другими свойствами
- *
- * Подход ООП привлекателен за счет чистоты кода. Инкапсуляция логики в родительском классе, в дочерних только
- * переопределение полей.
- * Однако! ООП метод подрузомевает выделение памяти на создание экземпляров. Что в целом для задачи не требуется
- * так как на лицо обычная трансформация данных.
- *
- */
-const getEntityField = require('entity')
-
+const { factoryTypeBySchema, mapPropertiesToGraphQG } = require('../lib/map-schema-graphql')
+const entityInterface = require('../interface/entity-interface')
+const rootSchema = require('../schema/root-entity.json')
 const schema = require('../schema/judgement-fine.json')
+
+//  type
+const HearingType = require('./hearing')
+
 const mapCustomField = {
   'hearing': (property) => {
     console.log('hearing custom..')
 
     return {
-      type: mapSchemaGraphQL.mapTypeSchemaToGraphQL(property),
+      type: HearingType,
       description: property.description
     }
   }
 }
-const fields = getEntityField(schema, mapCustomField)
 
-module.exports = mapSchemaGraphQL.mapSchemaToGraphQL(schema, fields)
+const fieldsRoot = mapPropertiesToGraphQG(rootSchema.properties)
+const fields = mapPropertiesToGraphQG(schema.properties, mapCustomField)
+const fieldUnion = _.assign(fields, fieldsRoot)
+
+const entityType = factoryTypeBySchema(schema, fieldUnion, entityInterface, mapCustomField)
+
+module.exports = entityType

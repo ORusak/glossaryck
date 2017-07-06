@@ -7,5 +7,18 @@ const typeQuery = require('./type-query/type-query')
 
 const schema = new graphql.GraphQLSchema({ query: typeQuery })
 
-graphql.graphql(schema, `{ judgementFine(id: "1") { guid }}`)
-  .then(console.log)
+graphql.graphql(schema, `{
+  judgementFine(id: "1") { 
+    guid
+    number
+  }
+  entity(id: "1") { 
+    guid,
+    ...on judgementFine{
+      number
+    }
+  }
+}`)
+  .then((data) => {
+    console.log(data)
+  })
