@@ -16,7 +16,7 @@ module.exports = new graphql.GraphQLObjectType({
     judgementFine: {
       type: new graphql.GraphQLList(judgementFine),
       args: {
-        id: { type: graphql.GraphQLString }
+        id: { type: graphql.GraphQLID }
       },
       resolve: (a, { id }) => {
         const value = _.cloneDeep(_.filter(db, {
@@ -37,7 +37,7 @@ module.exports = new graphql.GraphQLObjectType({
     entity: {
       type: new graphql.GraphQLList(entityInterface),
       args: {
-        id: { type: graphql.GraphQLString }
+        id: { type: graphql.GraphQLID }
       },
       resolve: (a, { id }) => {
         const value = _.cloneDeep(_.filter(db, {

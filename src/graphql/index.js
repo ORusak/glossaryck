@@ -10,7 +10,8 @@ const schema = new graphql.GraphQLSchema({ query: typeQuery })
 graphql.graphql(schema, `{
   judgementFine(id: "1") { 
     guid
-    number
+    number,
+    hearing
   }
   entity(id: "1") { 
     guid,
@@ -20,5 +21,5 @@ graphql.graphql(schema, `{
   }
 }`)
   .then((data) => {
-    console.log(data)
+    console.log(data.data.judgementFine)
   })

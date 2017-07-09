@@ -3,11 +3,13 @@
  */
 
 const _ = require('lodash')
+const graphql = require('graphql')
 
 const { factoryTypeBySchema, mapPropertiesToGraphQG } = require('../lib/map-schema-graphql')
 const entityInterface = require('../interface/entity-interface')
 const rootSchema = require('../schema/root-entity.json')
 const schema = require('../schema/judgement-fine.json')
+const db = require('../db')
 
 //  type
 const HearingType = require('./hearing')
@@ -17,8 +19,22 @@ const mapCustomField = {
     console.log('hearing custom..')
 
     return {
-      type: HearingType,
-      description: property.description
+      type: graphql.GraphQLID,
+      description: property.description,
+      serialize (value) {
+
+        const data = _.cloneDeep(_.filter(db, {
+          "document_type_guid_revision": "hearing",
+          guid: value
+        }))
+
+        return _.map(data, item => {
+          const valueFlatten  = _.assign(item, item.data)
+          Reflect.deleteProperty(valueFlatten, 'data')
+
+          return valueFlatten
+        })
+      }
     }
   }
 }
