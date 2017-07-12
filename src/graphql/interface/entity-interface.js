@@ -9,7 +9,7 @@ const schemaRoot = require('../schema/root-entity.json')
 
 const fields = mapPropertiesToGraphQG(schemaRoot.properties)
 
-//  type
+//  types
 
 module.exports = new graphql.GraphQLInterfaceType({
   name: "Entity",

@@ -33,24 +33,6 @@ module.exports = new graphql.GraphQLObjectType({
 
         return valueInit
       }
-    },
-    entity: {
-      type: new graphql.GraphQLList(entityInterface),
-      args: {
-        id: { type: graphql.GraphQLID }
-      },
-      resolve: (a, { id }) => {
-        const value = _.cloneDeep(_.filter(db, {
-          guid: id
-        }))
-
-        return _.map(value, item => {
-          const valueFlatten  = _.assign(item, item.data)
-          Reflect.deleteProperty(valueFlatten, 'data')
-
-          return valueFlatten
-        })
-      }
     }
   }
 })
