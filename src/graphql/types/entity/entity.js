@@ -4,9 +4,9 @@
 
 const graphql = require('graphql')
 
-const mapSchemaGraphQL = require('../lib/map-schema-graphql')
+const mapSchemaGraphQL = require('../../lib/map-schema-graphql')
 
-const schemaRoot = require('../schema/root-entity.json')
+const schemaRoot = require('./root-entity.json')
 
 module.exports = function getEntityField (schema, mapTypeCustom) {
   const fields = mapSchemaGraphQL.mapPropertiesToGraphQG(schemaRoot.properties)

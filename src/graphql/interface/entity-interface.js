@@ -5,7 +5,7 @@
 const graphql = require('graphql')
 
 const { mapPropertiesToGraphQG } = require('../lib/map-schema-graphql')
-const schemaRoot = require('../schema/root-entity.json')
+const schemaRoot = require('../types/entity/root-entity.json')
 
 const fields = mapPropertiesToGraphQG(schemaRoot.properties)
 

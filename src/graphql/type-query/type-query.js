@@ -7,7 +7,7 @@ const _ = require('lodash')
 
 const db = require('../example/db')
 
-const judgementFine = require('../types/judgement-fine/judgement-fine')
+const judgementFine = require('../types/judgement-fine/graphql/type')
 const entityInterface = require('../interface/entity-interface')
 
 module.exports = new graphql.GraphQLObjectType({

@@ -4,10 +4,10 @@
 
 const _ = require('lodash')
 
-const { factoryTypeBySchema, mapPropertiesToGraphQG } = require('../lib/map-schema-graphql')
-const entityInterface = require('../interface/entity-interface')
-const rootSchema = require('../schema/root-entity.json')
-const schema = require('../schema/hearing.json')
+const { factoryTypeBySchema, mapPropertiesToGraphQG } = require('../../lib/map-schema-graphql')
+const entityInterface = require('../../interface/entity-interface')
+const rootSchema = require('../entity/root-entity.json')
+const schema = require('./hearing.json')
 
 const fieldsRoot = mapPropertiesToGraphQG(rootSchema.properties)
 const fields = mapPropertiesToGraphQG(schema.properties)

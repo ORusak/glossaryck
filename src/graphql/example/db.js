@@ -1,6 +1,10 @@
+'use strict'
+
+const _ = require('lodash')
+
 const date = (date) => date.toISOString()
 
-module.exports = [
+const db = [
   {
     "guid": '1',
     "guid_revision": 1,
@@ -100,3 +104,34 @@ module.exports = [
     }
   }
 ]
+
+function normalizeEntity (data) {
+  const dataInit = _.cloneDeep(data)
+  const dataFlatten = _.assign(item, item.data)
+
+  Reflect.deleteProperty(dataFlatten, 'data')
+
+  return dataFlatten
+}
+
+module.exports = {
+  //  todo: поключить data-loader
+  get: id => {
+    const data = _.filter(db, { guid: id })
+
+    return normalizeEntity(data)
+  },
+  find: (filters) => {
+    const data = _.cloneDeep(_.filter(db, filters))
+
+    return _.map(data, item => {
+      const valueFlatten = _.assign(item, item.data)
+      Reflect.deleteProperty(valueFlatten, 'data')
+
+      return valueFlatten
+    })
+  },
+  update: () => {
+    throw new Error('Update not implement')
+  }
+}
