@@ -1,0 +1,9 @@
+{
+    "version": "0.0.1",
+    "name": "functional-data-process",
+    "description": "Task process data with functional programming style",
+    "main": "funtional-process-data-simple.js",
+    "dependencies": {
+        "monad-sequence-promise": "~0.0.4"
+    }
+}
