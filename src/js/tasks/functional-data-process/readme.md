@@ -33,7 +33,8 @@ const totalCartPrice = {
 ## Простая реализация под конкретную задачу
 ### Запуск
 ``` bash
-cd src/js/tasks/functional-data-process/
+git clone https://github.com/ORusak/glossaryck.git
+cd glossaryck/src/js/tasks/functional-data-process/
 node funtional-process-data-simple.js
 ```
 ### Особенности реализации
@@ -49,7 +50,8 @@ node funtional-process-data-simple.js
 ## Реализация функциональной цепочкой
 ### Запуск
 ``` bash
-cd src/js/tasks/functional-data-process/
+git clone https://github.com/ORusak/glossaryck.git
+cd glossaryck/src/js/tasks/functional-data-process/
 node funtional-process-data.js
 ```
 ### Особенности реализации
@@ -72,7 +74,8 @@ node funtional-process-data.js
     
 ## Реализация монадой последовательности
 ``` bash
-cd src/js/tasks/functional-data-process/
+git clone https://github.com/ORusak/glossaryck.git
+cd glossaryck/src/js/tasks/functional-data-process/
 npm i
 node funtional-process-data-monad-sequence.js
 ```
