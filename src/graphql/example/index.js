@@ -1,6 +1,7 @@
 /**
  * Created by Oleg Rusak on 27.06.2017.
  */
+'use strict'
 
 const graphql = require('graphql')
 const typeQuery = require('../type-query/type-query')

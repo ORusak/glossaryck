@@ -1,6 +1,7 @@
 /**
  * Created by Oleg Rusak on 02.07.2017.
  */
+'use strict'
 
 const graphql = require('graphql')
 const _ = require('lodash')
@@ -19,19 +20,11 @@ module.exports = new graphql.GraphQLObjectType({
         id: { type: graphql.GraphQLID }
       },
       resolve: (a, { id }) => {
-        const value = _.cloneDeep(_.filter(db, {
+
+        return db.find({
           "document_type_guid_revision": "judgement_fine",
           guid: id
-        }))
-
-        const valueInit = _.map(value, item => {
-          const valueFlatten  = _.assign(item, item.data)
-          Reflect.deleteProperty(valueFlatten, 'data')
-
-          return valueFlatten
         })
-
-        return valueInit
       }
     },
     entity: {
@@ -46,6 +39,7 @@ module.exports = new graphql.GraphQLObjectType({
 
         return _.map(value, item => {
           const valueFlatten  = _.assign(item, item.data)
+
           Reflect.deleteProperty(valueFlatten, 'data')
 
           return valueFlatten

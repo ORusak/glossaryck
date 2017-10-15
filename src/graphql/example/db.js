@@ -126,6 +126,7 @@ module.exports = {
 
     return _.map(data, item => {
       const valueFlatten = _.assign(item, item.data)
+      
       Reflect.deleteProperty(valueFlatten, 'data')
 
       return valueFlatten

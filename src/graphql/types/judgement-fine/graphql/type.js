@@ -1,6 +1,7 @@
 /**
  * Created by Oleg Rusak on 02.07.2017.
  */
+'use strict'
 
 const _ = require('lodash')
 
