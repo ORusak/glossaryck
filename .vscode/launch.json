@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Babel inheritance",
+            "name": "Babel inheritance1",
             "program": "${workspaceFolder}/src/js/class/babel-proto-polifyl/babel-proto-polyfil.js"
         },
         {
