@@ -2,6 +2,8 @@
  * Created by Oleg Rusak on 06.07.2017.
  */
 
+'use strict'
+
 const graphql = require('graphql')
 
 const { mapPropertiesToGraphQG } = require('../lib/map-schema-graphql')
