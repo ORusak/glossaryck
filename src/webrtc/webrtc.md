@@ -1,10 +1,13 @@
 Вопросы
 * Как захватывать рабочий стол?
 
-* Ресурсы
+# Ресурсы
     * Медиа-возможности HTML5. WebRTC  
         * https://www.youtube.com/watch?v=_gZXYjlBfnw
         * https://www.slideshare.net/oelifantiev/webrtc-47460817
+    * Курсы
+        * Introduction to WebRTC 
+        * Материалы https://resources.oreilly.com/examples/0636920040279/
 
 Web Audio API
 * Пример
@@ -24,7 +27,7 @@ Web Video API
 * Адаптер от google от префиксов вендеров
     * https://github.com/webrtc/adapter
 
-* Инструменты
+# Инструменты
     * chrome
         * chrome://webrtc-logs/
         * chrome://webrtc-internals/
