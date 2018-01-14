@@ -15,3 +15,12 @@
 * for in 
     * Итерируется по всем свойствам
     * проверка hasOwnProperty
+
+## Итераторы
+* Symbol.iterator
+* () => ({ 
+        next () => ({
+            value: any, 
+            done: boolean
+        })
+    })
