@@ -7,6 +7,7 @@
         * save перезатирает существующий. Работает как insert если нет _id
         * update патчит существующий
         * все методы принимают как один объект так и массив
+        * можно в рамках update делать query запросы, устанавливать или убирать поля 
     * find([criteria], [return_field]), findOne
         * return_field - {field1: 1, field2: 0}
         * .pretty
@@ -40,7 +41,7 @@
 * db
     * createCollection(name, options)
 # Индексы
-* Индексы хранятся в памяти требуется следить за их размером для избежания деоптимизации при выгрузке подгрузке
+* Индексы хранятся в памяти требуется следить за их размером для избежания деоптимизации при выгрузке/подгрузке
 * Индексы не используются с операторами
     * Regular expressions? or negation operators like $nin, $not, etc
     * Arithmetic operators like $mod, etc.
@@ -56,6 +57,8 @@
 
 # mapReduce - 
 * Солянка из map и reduce, find
+* Похожа на view из postgresql
+
 ```
 mapReduce(map, reduce, options)
 ```
