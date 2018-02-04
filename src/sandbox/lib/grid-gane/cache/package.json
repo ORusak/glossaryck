@@ -1,0 +1,7 @@
+{
+    "name": "grid-gane-cache",
+    "version": "0.0.1",
+    "scripts": {
+        "test": "test"
+    }
+}
