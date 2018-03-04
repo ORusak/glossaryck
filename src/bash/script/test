@@ -1,0 +1,133 @@
+#!/bin/bash
+
+echo "HWb $HOME"
+
+# call commands
+myVar=`ls`
+myVar1=$(ls)
+
+echo "$myVar"
+
+# math operations
+math1=$((5 + 1))
+
+echo "math: $math1"
+
+# condition block
+if ls | grep no_folder
+then
+    echo "This strange things"
+elif ls | grep readme.md > /dev/null
+then
+    echo "Exist readme"
+else 
+    echo "No work"
+fi
+
+# compare number operations
+# n1 -eq n2Возвращает истинное значение, если n1 равно n2.
+# n1 -ne n2Возвращает истинное значение, если n1не равно n2.
+# n1 -ge n2 Возвращает истинное значение, если n1больше или равно n2.
+# n1 -gt n2Возвращает истинное значение, если n1 больше n2.
+# n1 -le n2Возвращает истинное значение, если n1меньше или равно n2.
+# n1 -lt n2Возвращает истинное значение, если n1 меньше n2.
+comp1=6
+if [ $comp1 -gt 5 ]
+then
+    echo "compare: Ok"
+else
+    echo "compare: Not ok"
+fi
+
+#compare string operations
+
+# str1 = str2 Проверяет строки на равенство, возвращает истину, если строки идентичны.
+# str1 != str2Возвращает истину, если строки не идентичны.
+# str1 < str2Возвращает истину, если str1меньше, чем str2.
+# < need esc \<
+# str1 > str2 Возвращает истину, если str1больше, чем str2.
+# > need esc \>
+# -n str1 Возвращает истину, если длина str1больше нуля.
+# -z str1Возвращает истину, если длина str1равна нулю.
+
+comp_string_1="user_name"
+if [ "$comp_string_1" = "user_name" ]
+then
+    echo "compare_string: Ok"
+else
+    echo "compare_string: Not ok"
+fi
+
+comp_string_2="A"
+comp_string_3="B"
+if [ $comp_string_2 \< $comp_string_3 ]
+then
+    echo "compare_string: Ok"
+else
+    echo "compare_string: Not ok"
+fi
+
+# file operations
+
+# -d fileПроверяет, существует ли файл, и является ли он директорией.
+# -e fileПроверяет, существует ли файл.
+# -f file Проверяет, существует ли файл, и является ли он файлом.
+# -r fileПроверяет, существует ли файл, и доступен ли он для чтения.
+# -s file Проверяет, существует ли файл, и не является ли он пустым.
+# -w fileПроверяет, существует ли файл, и доступен ли он для записи.
+# -x fileПроверяет, существует ли файл, и является ли он исполняемым.
+# file1 -nt file2 Проверяет, новее ли file1, чем file2.
+# file1 -ot file2Проверяет, старше ли file1, чем file2.
+# -O file Проверяет, существует ли файл, и является ли его владельцем текущий пользователь.
+# -G fileПроверяет, существует ли файл, и соответствует ли его идентификатор группы идентификатору группы текущего пользователя.
+
+file2=`ls | grep readme.md`
+
+echo $file2
+if [ -f "$file2" ]
+then
+    echo "file: Ok"
+else
+    echo "file: Not ok"
+fi
+
+# ---- 
+# loop
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+for var in first "second pecond" third fourth fifth
+do
+    echo loop: The $var item
+done
+
+echo 
+
+# IFS env var set delimeter. by default is space.
+echo Block loop:IFS
+
+IFS=$'\n'
+
+for var in $(cat "$DIR"/example1.txt)
+do
+    echo loop:IFS: The $var item
+done
+
+echo 
+
+# iterate over dir and file
+echo "Block loop:dirs & files"
+
+for var in ./* 
+do
+
+if [ -d "$var" ] 
+then
+    echo "$var is dir"
+elif [ -f "$var" ] 
+then
+    echo $var is file
+else
+    echo What is it? $var 
+fi
+
+done
