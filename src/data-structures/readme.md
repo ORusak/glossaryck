@@ -1,4 +1,5 @@
 # Структуры
+* Repo with desc data structure https://github.com/thejameskyle/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js
 
 ## Связанный список
 
