@@ -4,6 +4,16 @@
     // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Json-Yaml",
+            "program": "${workspaceFolder}/src/sandbox/lib/json-yaml/index.js",
+            "args": [
+                "${workspaceFolder}/src/sandbox/lib/json-yaml/test.json"
+            ]
+        },
         {
             "type": "node",
             "request": "launch",
