@@ -30,9 +30,6 @@ function addApp(opts) {
         cwd: join(ROOT_PATH, opts.name),
         env: {
             NODE_ENV: "development"
-        },
-        env_mosreg: {
-            NODE_ENV: "mosreg"
         }
     }, opts);
 	apps.push(appConfig);
@@ -52,36 +49,19 @@ function exec(params) {
     addApp(cmdConfig)
 }
 
-
-
-// ActiveMQ
-exec({
-    name: 'activemq',
-    cmd: 'bash',
-    args: '-c "/usr/local/Cellar/activemq/5.14.4/bin/activemq console"',
-});
-
-// IDE server
-// exec({
-//     name: 'ideamng',
-//     cmd: join(HOME, '_work/_SysUtils/IDEA-LServer/IntelliJIDEALicenseServer_darwin_amd64'),
-//     args: '-p 9966 -u Surgut.Inc',
-//
-// });
-
 // Node.JS Backend service
-addApp({ name: 'backend' });
+addApp({ name: 'app3' });
 
 // Node.JS Docs Flow service
-addApp({ name: 'docs_flow' });
+addApp({ name: 'app2' });
 
 
 // Node.JS Documents service
-addApp({ name: 'documents' });
+addApp({ name: 'app4' });
 
 // Node.JS Reference Contractors service
 addApp({
-    name: 'reference_contractors',
+    name: 'app1',
     env: {
         NODE_ENV: 'development',
         PORT: 8080,
@@ -89,27 +69,3 @@ addApp({
         CORS_ALLOW_HEADERS: 'localhost,null'
     }
 });
-
-// Node.JS Business Entity service
-addApp({ name: 'business-entity' });
-
-// Node.JS Storage service
-addApp({ name: 'storage' });
-
-// Node.JS Uploader service
-addApp({ name: 'uploader' });
-
-
-// Node.JS Print Template service
-// addApp({ name: 'print-template' });
-
-// Node.JS Frontend service
-// addApp({
-//     name: 'frontend',
-//     script: 'server/server.coffee',
-//     interpreter: join(ROOT_PATH, 'frontend/node_modules/.bin/coffee')
-// });
-
-
-// console.log(JSON.stringify(config, null, '  '));
-
