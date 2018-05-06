@@ -12,3 +12,6 @@ echo "" > ~/.git-message-template
 #!/bin/sh
 git rev-parse --abbrev-ref HEAD | sed 's/[a-zA-Z]*_\([0-9]*\)_[a-zA-Z_]*/\1/' | { IFS= read -r spo; printf 'RCV-%s\n' "$spo"; } > ~/.commit-template
 ```
+
+# Multi repos check status
+* https://github.com/rw251/git-summary.git 
