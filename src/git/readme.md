@@ -15,3 +15,6 @@ git rev-parse --abbrev-ref HEAD | sed 's/[a-zA-Z]*_\([0-9]*\)_[a-zA-Z_]*/\1/' | 
 
 # Multi repos check status
 * https://github.com/rw251/git-summary.git 
+
+# Previous commit info
+https://github.com/Fakerr/git-recall
