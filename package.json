@@ -20,9 +20,10 @@
   "author": "Oleg Rusak",
   "license": "SEE LICENSE IN license.txt",
   "devDependencies": {
+    "ava": "~0.25.0",
     "eslint": "3.4.0",
-    "lodash": "4.13.1",
-    "js-yaml": "~3.11.0"
+    "js-yaml": "~3.11.0",
+    "lodash": "4.13.1"
   },
   "dependencies": {
     "znode": "1.1.3"
