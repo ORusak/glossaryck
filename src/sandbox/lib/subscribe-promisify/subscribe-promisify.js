@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 const DEFAULT_TIMEOUT = 2 * 1000;
 
-class SubcribePromisify {
+class SubscribePromisify {
 
     constructor () {
 
@@ -65,4 +65,4 @@ class SubcribePromisify {
     }
 }
 
-module.exports = SubcribePromisify;
+module.exports = SubscribePromisify;

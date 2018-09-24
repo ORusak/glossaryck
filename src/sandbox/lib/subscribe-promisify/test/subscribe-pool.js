@@ -8,7 +8,7 @@
 
 const test = require('ava');
 
-const SubcribePool = require('../subscribe-pool');
+const SubscribePool = require('../subscribe-pool');
 
 test.before(() => {
 
@@ -17,8 +17,8 @@ test.after(() => {
 
 })
 
-test('SubcribePool.handler success run handler with result',  async (t) => {
-    const pool = new SubcribePool();
+test('SubscribePool.handler success run handler with result',  async (t) => {
+    const pool = new SubscribePool();
     
     const promise = pool.add((yeah, nah, ...args) => {
         const [ message ] = args;
@@ -37,8 +37,8 @@ test('SubcribePool.handler success run handler with result',  async (t) => {
     t.is(pool._listeners.size, 0);
 });
 
-test('SubcribePool.handler success run handler with error',  async (t) => {
-    const pool = new SubcribePool();
+test('SubscribePool.handler success run handler with error',  async (t) => {
+    const pool = new SubscribePool();
     const TYPES = ['UPDATED'];
     const promise = pool.add((yeah, nah, ...args) => {
         const [ message ] = args;
@@ -61,27 +61,10 @@ test('SubcribePool.handler success run handler with error',  async (t) => {
     t.is(pool._listeners.size, 0);
 });
 
-test('SubcribePool.handler success run handler with error',  async (t) => {
-    const pool = new SubcribePool();
+test('SubscribePool.handler success run handler with error',  async (t) => {
+    const pool = new SubscribePool();
     const messages = []
 
-    const updatedEntity = (yeah, nah, ...args) => {
-        const [ message = {} ] = args;
-        const { type } = message;
-
-        if (type === 'UPDATED') return yeah();
-    }
-    
-    const deletedEntity = (yeah, nah, ...args) => {
-        const [ message = {} ] = args;
-        const { type } = message;
-
-        if (type === 'DELETED') return yeah();
-    }
-
-    pool.add(updatedEntity);
-    pool.add(deletedEntity);
-    
     let counter = 0;
     const interval = setInterval(() => {
         const message = messages[counter++]
@@ -90,10 +73,30 @@ test('SubcribePool.handler success run handler with error',  async (t) => {
     }, 500);
     
     try {
+        //  handler notification entity was updated
+        const updatedEntity = (yeah, nah, ...args) => {
+            const [ message = {} ] = args;
+            const { type } = message;
+    
+            if (type === 'UPDATED') return yeah();
+        }
+        //  register handler in pool
+        pool.add(updatedEntity);
+
+        //  generate message: entry was updated
         messages.push({
             type: 'UPDATED'
         });
         await pool.get(updatedEntity);
+
+        const deletedEntity = (yeah, nah, ...args) => {
+            const [ message = {} ] = args;
+            const { type } = message;
+    
+            if (type === 'DELETED') return yeah();
+        }
+        pool.add(deletedEntity);
+
         messages.push({
             type: 'DELETED'
         });
@@ -107,8 +110,8 @@ test('SubcribePool.handler success run handler with error',  async (t) => {
     t.is(pool._listeners.size, 0);
 });
 
-test('SubcribePool.handler success run handler with error',  async (t) => {
-    const pool = new SubcribePool();
+test('SubscribePool.handler success run handler with error',  async (t) => {
+    const pool = new SubscribePool();
     const messages = [{
         type: 'UPDATED'
     }, {
