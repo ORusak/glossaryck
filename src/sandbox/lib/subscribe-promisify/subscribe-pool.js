@@ -2,9 +2,9 @@
 
 const _ = require('lodash');
 
-const SubcribePromisify = require('./subscribe-promisify');
+const SubscribePromisify = require('./subscribe-promisify');
 
-class SubcribePool {
+class SubscribePool {
 
     constructor () {
 
@@ -30,7 +30,7 @@ class SubcribePool {
 
     add (listener, timeout) {
         listener
-        const supromise = new SubcribePromisify();
+        const supromise = new SubscribePromisify();
         const promise = supromise.register(listener, timeout)
             .then((result) => {
                 result
@@ -56,4 +56,4 @@ class SubcribePool {
     }
 }
 
-module.exports = SubcribePool;
+module.exports = SubscribePool;
