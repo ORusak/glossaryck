@@ -29,7 +29,6 @@ class SubscribePool {
     }
 
     add (listener, timeout) {
-        listener
         const supromise = new SubscribePromisify();
         const promise = supromise.register(listener, timeout)
             .then((result) => {
