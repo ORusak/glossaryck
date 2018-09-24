@@ -1,7 +1,7 @@
 {
-  "name": "glosaryck",
+  "name": "glossaryck",
   "version": "0.0.1",
-  "description": "My glosarik by JavaScript",
+  "description": "My glossaryck by JavaScript",
   "main": "src/index.js",
   "scripts": {
     "test": "test"
@@ -15,7 +15,7 @@
     "sequence"
   ],
   "bugs": {
-    "url": "?"
+    "url": "https://github.com/ORusak/glossaryck"
   },
   "author": "Oleg Rusak",
   "license": "SEE LICENSE IN license.txt",
