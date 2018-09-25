@@ -32,7 +32,6 @@ class SubscribePool {
         const supromise = new SubscribePromisify();
         const promise = supromise.register(listener, timeout)
             .then((result) => {
-                result
                 this._listeners.delete(listener);
 
                 return result;
