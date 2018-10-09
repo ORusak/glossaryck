@@ -50,12 +50,22 @@ test('TestFlow. subscribe to two event',  async (t) => {
     }, 500);
 
     const result = await flow
-        .subscribe((yeah, nah, ...args) => {
+        .subscribeAsync((yeah, nah, ...args) => {
             const [ message ] = args;
 
             if (message.type === 'UPDATED') return yeah('updated');
         })
-        .subscribe((yeah, nah, ...args) => {
+
+
+        flow
+        .subscribe1 init
+        .subscribe1
+        .subscribe2 init
+        .action
+        .subscribe2
+
+        
+        .subscribeSync((yeah, nah, ...args) => {
             const [ message = {} ] = args;
             const { type } = message;
     
