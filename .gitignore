@@ -8,3 +8,5 @@ src/.DS_Store
 node_config/local*.json
 .idea/*
 !.idea/runConfigurations
+
+*.log
