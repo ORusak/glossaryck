@@ -70,11 +70,18 @@
 * http://meyerweb.com/eric/tools/css/reset/
 * https://necolas.github.io/normalize.css/ - выглядит более зрелой
 ### Порядок загрузки страницы
+* Материалы
+    * https://webo.in/articles/all/2009/31-rending-restyle-reflow-relayout/
+    * https://uspei.com/uskorenie-sajta/kak-skripty-javascript-vliyayut-na-skorost-zagruzki-stranitsy/
 * Загружается страница
+    * анализируется doctype
 * Строится DOM дерево элементов
 * Загружается список критичных ресурсов (CSS, JS, картинки)
-* Строится CSS DOM
-* Объеденяется DOM элементов и CSS DOM
+* Строится CSS DOM  
+    * каскадным образом
+* Объеденяется DOM элементов и CSS DOM (rendering tree)
+    * компоновака - назначение координат
+    * отрисовка - 
 * Выполняются JS скрипты
 * Корректируется CSS DOM, DOM элементов
 
