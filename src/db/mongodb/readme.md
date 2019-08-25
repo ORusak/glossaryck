@@ -7,7 +7,7 @@
         * save перезатирает существующий. Работает как insert если нет _id
         * update патчит существующий
         * все методы принимают как один объект так и массив
-        * можно в рамках update делать query запросы, устанавливать или убирать поля 
+        * можно в рамках update делать query запросы, устанавливать или убирать поля
     * find([criteria], [return_field]), findOne
         * return_field - {field1: 1, field2: 0}
         * .pretty
@@ -15,10 +15,10 @@
         * .limit
     * findAndModify - атомарная операция поиска и модификации, как вариант транзакции
     ``` js
-    query: {_id:2,product_available:{$gt:0}}, update:{ 
-        $inc:{product_available:-1}, 
-        $push:{product_bought_by:{customer:"rob",date:"9-Jan-2014"}} 
-    }  
+    query: {_id:2,product_available:{$gt:0}}, update:{
+        $inc:{product_available:-1},
+        $push:{product_bought_by:{customer:"rob",date:"9-Jan-2014"}}
+    }
     ```
     * drop
     * remove([criteria], [count])
@@ -55,30 +55,30 @@
 * getTimestamp() - дата создания
 * str - строкой
 
-# mapReduce - 
+# mapReduce -
 * Солянка из map и reduce, find
 * Похожа на view из postgresql
 
 ```
 mapReduce(map, reduce, options)
 ```
-* 
+*
 * Может наполнять/дополнять результат коллекций
 
-# Text Search 
+# Text Search
 * можно строить по одному или всем полям в документе
 * учитываются настройки поиска: язык, регистр и прочее
-* 
+*
 ```
 db.posts.find({post_text:{$search:"tutorialspoint"}})
 ```
 # regex Expression
-* 
+*
 ```
 db.posts.find({post_text:{$regex:"tutorialspoint", $options:"$i"}})
 ```
 # Embedded
-* Храним данные вложенные 
+* Храним данные вложенные
 * Минус увеличение размера хранимых данных из-за дублирвоания, плюс быстрота выборки.
 
 # Referenced Relationships
@@ -87,10 +87,10 @@ db.posts.find({post_text:{$regex:"tutorialspoint", $options:"$i"}})
 * Виды:
     * Manual References
         * Храним просто ссылку
-        * Рекомендуется когда документ в этой же коллекции 
+        * Рекомендуется когда документ в этой же коллекции
     * DBRefs
         * Храним ссылку, имя коллекции, имя БД
-        * Рекомендуется документ в отдельной коллекции 
+        * Рекомендуется документ в отдельной коллекции
         * Как ни странно, количество запросов это не уменьшает. Просто дополнительная описательная информация. Есть ORM которые используют эту информацию, делая эти запросы за программиста.
 
 # Covered Query
@@ -120,9 +120,9 @@ db.createCollection("cappedLogCollection",{capped:true,size:10000})
 
 ## Auto-Increment Sequence
 * Коллекция счетчиков
-* При создании нового документа получать их нее атомарной операцией новый номер
+* При создании нового документа получать для нее атомарной операцией новый номер
 
-# replication 
+# replication
 * A cluster of N nodes
 * Any one node can be primary
 * All write operations go to primary
@@ -131,14 +131,14 @@ db.createCollection("cappedLogCollection",{capped:true,size:10000})
 * Consensus election of primary
 # Sharding
 * горизонтальное масштабирование БД
-* .. 
+* ..
 # Dump MongoDB Data
 * command - mongodump, mongorestore
 * --host, --dbpath, --collection, --out BACKUP_DIRECTORY
 # Deployment
 * mongostat - текущее состояние выполнения операций в инстансах
 * mongotop [time_update] - топовые операции на запись, чтение
-    * 
+    *
 
  # GridFS
 * Хранение файлов больше 16MB

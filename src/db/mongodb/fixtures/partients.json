@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Jonh Doe",
+        "age": 43,
+        "histories": [
+            {
+                "disease": "cold",
+                "treatment": "antibiotics"
+            }
+        ]
+    },
+    {
+        "name": "Anna Karenina",
+        "age": 43,
+        "histories": [
+            {
+                "disease": "train",
+                "treatment": "jogging"
+            }
+        ]
+    },
+    {
+        "name": "Nean Derthal",
+        "age": 24,
+        "histories": [
+            {
+                "disease": "extinction",
+                "treatment": "freeze"
+            }
+        ]
+    }
+]
