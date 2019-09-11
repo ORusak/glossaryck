@@ -1,0 +1,16 @@
+# ide
+# vscode
+.history
+.vscode
+# webstorm
+.idea
+
+# local config
+wallaby.conf.js
+
+# project
+node_modules
+
+# test
+.nyc_output
+coverage
