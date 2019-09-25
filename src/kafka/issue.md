@@ -29,7 +29,7 @@ In case when you get log like this:
 There are two ways to fix this
 1. configure dynamic linker with the directory where library is built (deeply inside `./node_modules`)
 2. Build and install lib system-wide
-    1. `git clone git@github.com:edenhill/librdkafka.git`
+    1. `git clone https://github.com/edenhill/librdkafka.git`
     1. `cd librdkafka`
     1. `./configure && make`
     1. `sudo make install`
