@@ -1,0 +1,3 @@
+# Trableshooting
+* $_$wf not found. vm.createContext()
+  * https://github.com/wallabyjs/public/issues/1271
