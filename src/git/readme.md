@@ -1,4 +1,7 @@
 # Настройка установки template message
+
+https://bitbucket.org/snippets/atlassian/qedp7d
+
 * Создание hook на нужное событие. Сделать hook исполняемым.
     * например post-checkout
 ```
