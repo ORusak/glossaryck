@@ -6,7 +6,7 @@
 2. 
 
 # Задачи по внедрению практик
-1. Добавить maintaince enpoint
+1. Добавить maintaince endpoint
   * поискать готовые решения, middleware
   
 # Задачи по развитию
